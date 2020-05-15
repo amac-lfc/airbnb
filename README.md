@@ -25,3 +25,6 @@ Linear Regression, Linear Regression with Gradient Boosting method
 * Step 7: Improve the model from step 6 with the help of the XGBoost Algorithm and perform some final tweaking of it. 
 * Step 8: Retrieve the data about big events in Chicago and confront it with the historical price of Airbnbs. 
 * Step 9: Develop a model that predicts the price of a listing given an event with a certain number of visitors. 
+
+## Resources 
+1) https://www.youtube.com/watch?v=PPLop4L2eGk&list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN&index=1  
