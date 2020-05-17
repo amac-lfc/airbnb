@@ -28,3 +28,4 @@ Linear Regression, Linear Regression with Gradient Boosting method
 
 ## Resources 
 1) https://www.youtube.com/watch?v=PPLop4L2eGk&list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN&index=1  
+2) https://campus.datacamp.com/courses/pandas-foundations/
