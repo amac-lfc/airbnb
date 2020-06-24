@@ -12,6 +12,13 @@ Algorithms used:
 Linear, Lasso, Ridge, and Polynomial Regressions. 
 Clustering with PCA 
 
+## File Order 
+In case you want to follow the steps of the project you should read the notebooks in the following order:
+1) EDA
+2) data_preprocessing 
+3) regressions
+
+
 ## To-do list
 
 * Step 1: Perform the necessary data cleaning and formating on the Chicago Airbnb dataset for future convenience. 
