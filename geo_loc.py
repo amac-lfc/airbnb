@@ -4,8 +4,8 @@ import numpy as np
 import osmnx as ox   # for finding objects within a given radius 
 import openrouteservice as ors   # for finding the walking distance in seconds and meters to a given point 
 ### for promting to choose a file 
-from tkinter import Tk
-from tkinter.filedialog import askopenfilename
+from tqdm import tqdm
+from progressbar import ProgressBar
 ### others 
 import re
 import requests
@@ -14,9 +14,13 @@ import time
 ### for ors we need an API Key, it can be found on the https://openrouteservice.org/ once you create an account 
 client = ors.Client(key='5b3ce3597851110001cf6248fb1ecfcd8ab8422b93b5dd978d83e93e')
 ox.config(log_console=False, use_cache=True)
+file_name = input('Enter the name of your CSV file (Leave empty for main dataset): ') 
+if not file_name:
+    file_name = 'listings_cleaned.csv'
+print('CSV File Name: {}'.format(file_name))
+time.sleep(1)
 
-
-def choose_csv(main_data = True):
+def choose_csv(main_data = file_name):
     '''
     Returns the dataset you chose. 
 
@@ -24,9 +28,12 @@ def choose_csv(main_data = True):
         data: a Pandas DataFrame object
     '''
 
-    if main_data:
-        data = pd.read_csv('listings_cleaned.csv',index_col=['id'])
+
+    if main_data != None:
+        data = pd.read_csv(file_name,index_col=['id'])
     else:
+        from tkinter import Tk
+        from tkinter.filedialog import askopenfilename
         Tk().withdraw() # we don't want a full GUI, so keep the root window from appearing
         filename = askopenfilename() # show an "Open" dialog box and return the path to the selected file
         data = pd.read_csv(filename)
@@ -49,7 +56,7 @@ def pois_amenities(data):
     cafes = []
     unis = []
     data_temp = data 
-    for x in range(len(data_temp)):
+    for x in tqdm(range(len(data_temp)),desc='Amenities'):
         pois_temp = ox.pois_from_point(point=(data_temp.latitude.iloc[x],data_temp.longitude.iloc[x]), dist=1000, tags=tags)  #get POIs (tags) for a point with latitude and longitude in a range dist (in meters) 
         # pois_temp is a DataFrame with the information about each POI 
         if 'amenity' in pois_temp: 
@@ -99,8 +106,8 @@ def pois_subway(data):
     cta = []
     walk_time = [] #walking time to the closest CTA station in seconds 
     data_temp = data
-    for x in range(len(data_temp)):
-        print('iteration #: {}'.format(x))
+    # for i in tqdm(range(len(data_temp))):
+    for x in tqdm(range(len(data_temp)), desc = 'Subway'):
         pois_temp = ox.pois_from_point(point=(data_temp.latitude.iloc[x],data_temp.longitude.iloc[x]), dist=1000, tags=tags)  
         if 'subway' in pois_temp and len(pois_temp[pois_temp['subway'] == 'yes'].dropna(axis=1, how='any')) > 0: # if there is a column 'subway' in the temporary dataset with POIs for a listing x it means that there are stations within 1000m
             train = pois_temp[pois_temp['subway'] == 'yes'].dropna(axis=1, how='any') # slicing out the information about the subways stations (name and location)
@@ -122,7 +129,7 @@ def pois_subway(data):
             destinations - a list of indecies of point to which the distance is going to be measured (basicly just excludes the starting point)
             profile - method of moving (some of the alternatives are “driving-car” and  “cycling-regular”)
             metrics - 'duration': time in secodnds to destination
-               also - 'distance': distance in meters  
+            also - 'distance': distance in meters  
             
             '''
             matrix = client.distance_matrix(
@@ -163,14 +170,15 @@ def save_csv(dataframe):
     data_with_counts.to_csv('data_with_counts_'+str(len(data_with_counts))+'.csv')
 
 
-def main():
+if __name__ == "__main__":
     start = time.time()
-    dataset = choose_csv(main_data = False)
+    dataset = choose_csv(main_data = 'listings_cleaned.csv')
     data_amenities = pois_amenities(dataset)
-    main.data = pois_subway(data_amenities)
+    new_data = pois_subway(data_amenities)
     end = time.time()
+    save_csv(new_data)
     print(end - start)
-    return main.data
+
 
 
     
