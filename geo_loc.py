@@ -5,7 +5,6 @@ import osmnx as ox   # for finding objects within a given radius
 import openrouteservice as ors   # for finding the walking distance in seconds and meters to a given point 
 ### for promting to choose a file 
 from tqdm import tqdm
-from progressbar import ProgressBar
 ### others 
 import re
 import requests
@@ -14,15 +13,13 @@ from openrouteservice import client, places
 #api_key='5b3ce3597851110001cf6248fb1ecfcd8ab8422b93b5dd978d83e93e'
 # '5b3ce3597851110001cf6248f4a7fee5db334593bc67406f86071778'
 ### for ors we need an API Key, it can be found on the https://openrouteservice.org/ once you create an account 
-client = ors.Client(key='5b3ce3597851110001cf6248fb1ecfcd8ab8422b93b5dd978d83e93e')
+client = ors.Client(key=input('Enter your OpenRouteService API Key: '))
 ox.config(log_console=False, use_cache=True)
 
 def choose_csv():
     '''
     Returns the dataset you chose. 
 
-    Returns:
-        data: a Pandas DataFrame object
     '''
     file_name = input('Enter the name of your CSV file (Leave empty to call file explorer): ') 
     if not file_name:
@@ -32,7 +29,9 @@ def choose_csv():
         file_name = askopenfilename()
     print('CSV File Name: {}'.format(file_name))
     time.sleep(1)
-    data = pd.read_csv(file_name,index_col=['id'])
+    data = pd.read_csv(file_name)
+    if 'id' in data:
+        data.set_index('id')
     return data
 
 def pois_amenities(data):
@@ -47,12 +46,10 @@ def pois_amenities(data):
         data_new: The extended dataframe `data`
     '''
     tags = {'amenity':['restaurant', 'bar', 'cafe','university']} # here we specify the POIs (Points of Interest) we want to find 
-    restaurants = []
-    bars = []
-    cafes = []
-    unis = []
+    restaurants, bars, cafes, unis = ([] for i in range(4)) # creating empty dictionaries
     errors_a = 0 
     data_temp = data 
+
     for x in tqdm(range(len(data_temp)),desc='Amenities'):
         try:
             pois_temp = ox.pois_from_point(point=(data_temp.latitude.iloc[x],data_temp.longitude.iloc[x]), dist=1000, tags=tags)  #get POIs (tags) for a point with latitude and longitude in a range dist (in meters) 
@@ -107,8 +104,7 @@ def pois_subway(data):
     Returns a new extended dataset with the number of subway (in case of Chicago CTA) 
     stations within a radius of 1000 meters as well as the walking time to the nearest one in seconds.
     If there are not any stations in the radius of 1000m, the walking time to a station within a radius of 5000m is checked.  
-    '''
-       
+    '''  
     tags = {'railway': 'subway'}
     cta = []
     walk_time = [] #walking time to the closest CTA station in seconds 
@@ -125,12 +121,14 @@ def pois_subway(data):
                 The following function uses regular expressions (import re) to format the long and lat 
                 retrieved by the ox.pois_from_point method. It drops all the symbols that are not a number (^0-9), not a dot (^.), not a space (^ ), and not a negative sign (^-) 
                 ''' 
-                for x in range(len(train)):
-                    loc_str = str(train.geometry.iloc[x])
-                    loc_num = re.sub("[^0-9,^.,^ ,-]", "", loc_str).lstrip().split(' ')
-                    for i in range(len(loc_num)): 
-                        loc_num[i] = float(loc_num[i]) 
-                    coordinates.append(loc_num)
+                for _ in range(len(train)):
+                    coordinates.append(train.geometry.iloc[_].x)
+                    coordinates.append(train.geometry.iloc[_].y)
+                    # loc_str = str()
+                    # loc_num = re.sub("[^0-9,^.,^ ,-]", "", loc_str).lstrip().split(' ')
+                    # for i in range(len(loc_num)): 
+                    #     loc_num[i] = float(loc_num[i]) 
+                    # coordinates.append(loc_num)
                 '''
                 Read more about the OpenRouteService in their docs: https://openrouteservice-py.readthedocs.io/en/latest/ 
                 locations - a dicitonary with the pairs of long and lat (includes both the starting point and destination(s))
@@ -145,7 +143,7 @@ def pois_subway(data):
                         locations = coordinates,
                         destinations = [_ for _ in range(1,len(coordinates))],
                         profile = 'foot-walking',
-                        metrics = ['duration'],
+                        metrics = 'duration',
                         validate = False,
                     )
 
@@ -156,6 +154,7 @@ def pois_subway(data):
 
                 cta.append((len(train['name'].unique()))) # adding the number of unique CTA stations (.unique because several entrences to the same station are recorded)
                 walk_time.append(round((matrix['durations'][0][matrix['durations'][0].index(min(matrix['durations'][0]))]/60),2))
+                
             else: 
                 pois_temp = ox.pois_from_point(point=(data_temp.latitude.iloc[listing],data_temp.longitude.iloc[listing]), dist=5000, tags=tags)  
                 train = pois_temp[pois_temp['subway'] == 'yes'].dropna(axis=1, how='any')
@@ -165,12 +164,15 @@ def pois_subway(data):
                     pois_temp = ox.pois_from_point(point=(data_temp.latitude.iloc[listing],data_temp.longitude.iloc[listing]), dist=10000, tags=tags)  
                     train = pois_temp[pois_temp['subway'] == 'yes'].dropna(axis=1, how='any')
                 coordinates = [[data_temp.iloc[listing].longitude,data_temp.iloc[listing].latitude]]
-                for x in range (len(train)):
-                    loc_str = str(train.geometry.iloc[x])
-                    loc_num = re.sub("[^0-9,^.,^ ,-]", "", loc_str).lstrip().split(' ')
-                    for i in range(len(loc_num)): 
-                        loc_num[i] = float(loc_num[i]) 
-                coordinates.append(loc_num)
+                for _ in range(len(train)):
+                    coordinates.append(train.geometry.iloc[_].x)
+                    coordinates.append(train.geometry.iloc[_].y)
+                # for x in range (len(train)):
+                #     loc_str = str(train.geometry.iloc[x])
+                #     loc_num = re.sub("[^0-9,^.,^ ,-]", "", loc_str).lstrip().split(' ')
+                #     for i in range(len(loc_num)): 
+                #         loc_num[i] = float(loc_num[i]) 
+                # coordinates.append(loc_num)
                 try:
                     matrix = client.distance_matrix(
                         locations = coordinates,
@@ -200,20 +202,19 @@ def pois_subway(data):
     data_cta = data_temp
     return data_cta
 
-def save_csv(dataframe):
-    data_with_counts = dataframe
+def save_csv(data):
+    data_with_counts = data
     #print(data_with_counts.head(10))
     data_with_counts.to_csv('data_with_counts_final.csv')
 
-if __name__ == "__main__":
-    start = time.time()
-    dataset = choose_csv()
-    #data_amenities = pois_amenities(dataset)
-    new_data = pois_subway(dataset)
-    end = time.time()
-    save_csv(new_data)
-    print('Run time: {}'.format(end - start))
+# if __name__ == "__main__":
+#     start = time.time()
+#     dataset = choose_csv()
+#     data_amenities = pois_amenities(dataset)
+#     new_data = pois_subway(dataset)
+#     end = time.time()
+#     save_csv(new_data)
+#     print('Run time: {} minutes'.format((end - start)/60))
 
 
 
-    
