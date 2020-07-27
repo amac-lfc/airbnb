@@ -105,30 +105,26 @@ def pois_subway(data):
     stations within a radius of 1000 meters as well as the walking time to the nearest one in seconds.
     If there are not any stations in the radius of 1000m, the walking time to a station within a radius of 5000m is checked.  
     '''  
-    tags = {'railway': 'subway'}
+    tags =  {'railway': 'subway'}
     cta = []
     walk_time = [] #walking time to the closest CTA station in seconds 
     data_temp = data
-    # for i in tqdm(range(len(data_temp))):
     errors_s = 0
     for listing in tqdm(range(len(data_temp)), desc = 'Subway'):
         try:
-            pois_temp = ox.pois_from_point(point=(data_temp.latitude.iloc[listing],data_temp.longitude.iloc[listing]), dist=1000, tags=tags)  
+            pois_temp = ox.pois_from_point(point=(data_temp.latitude.iloc[listing],data_temp.longitude.iloc[listing]), dist=1000, tags=tags) 
+            
             if 'subway' in pois_temp and len(pois_temp[pois_temp['subway'] == 'yes'].dropna(axis=1, how='any')) > 0: # if there is a column 'subway' in the temporary dataset with POIs for a listing x it means that there are stations within 1000m
                 train = pois_temp[pois_temp['subway'] == 'yes'].dropna(axis=1, how='any') # slicing out the information about the subways stations (name and location)
                 coordinates = [[data_temp.iloc[listing].longitude,data_temp.iloc[listing].latitude]] # extracting the long and lat of a listing x 
+                
                 '''
                 The following function uses regular expressions (import re) to format the long and lat 
                 retrieved by the ox.pois_from_point method. It drops all the symbols that are not a number (^0-9), not a dot (^.), not a space (^ ), and not a negative sign (^-) 
                 ''' 
                 for _ in range(len(train)):
-                    coordinates.append(train.geometry.iloc[_].x)
-                    coordinates.append(train.geometry.iloc[_].y)
-                    # loc_str = str()
-                    # loc_num = re.sub("[^0-9,^.,^ ,-]", "", loc_str).lstrip().split(' ')
-                    # for i in range(len(loc_num)): 
-                    #     loc_num[i] = float(loc_num[i]) 
-                    # coordinates.append(loc_num)
+                    coord_temp = [train.geometry.iloc[_].x,train.geometry.iloc[_].y]
+                    coordinates.append(coord_temp)
                 '''
                 Read more about the OpenRouteService in their docs: https://openrouteservice-py.readthedocs.io/en/latest/ 
                 locations - a dicitonary with the pairs of long and lat (includes both the starting point and destination(s))
@@ -136,64 +132,69 @@ def pois_subway(data):
                 profile - method of moving (some of the alternatives are “driving-car” and  “cycling-regular”)
                 metrics - 'duration': time in secodnds to destination
                 also - 'distance': distance in meters  
-                
-                '''
-                try:
-                    matrix = client.distance_matrix(
-                        locations = coordinates,
-                        destinations = [_ for _ in range(1,len(coordinates))],
-                        profile = 'foot-walking',
-                        metrics = 'duration',
-                        validate = False,
-                    )
 
-                except Exception:
-                    print('Resetting API Limit')
-                    time.sleep(500)
-                    continue
+                '''
+    #             try:
+                matrix = client.distance_matrix(
+                    locations = coordinates,
+                    destinations = [_ for _ in range(1,len(coordinates))],
+                    profile = 'foot-walking',
+                    metrics = ['duration'],
+                    validate = False,
+                )
+
+    #             except Exception:
+    #                 print('Resetting API Limit')
+    #                 time.sleep(500)
+    #                 continue
 
                 cta.append((len(train['name'].unique()))) # adding the number of unique CTA stations (.unique because several entrences to the same station are recorded)
                 walk_time.append(round((matrix['durations'][0][matrix['durations'][0].index(min(matrix['durations'][0]))]/60),2))
-                
+                #print(walk_time)
+
             else: 
-                pois_temp = ox.pois_from_point(point=(data_temp.latitude.iloc[listing],data_temp.longitude.iloc[listing]), dist=5000, tags=tags)  
+                pois_temp = ox.pois_from_point(point=(data_temp.latitude.iloc[listing],data_temp.longitude.iloc[listing]), dist=2500, tags=tags)  
                 train = pois_temp[pois_temp['subway'] == 'yes'].dropna(axis=1, how='any')
                 if len(train) > 0:
                     pass
                 else:
-                    pois_temp = ox.pois_from_point(point=(data_temp.latitude.iloc[listing],data_temp.longitude.iloc[listing]), dist=10000, tags=tags)  
+                    pois_temp = ox.pois_from_point(point=(data_temp.latitude.iloc[listing],data_temp.longitude.iloc[listing]), dist=5000, tags=tags)  
                     train = pois_temp[pois_temp['subway'] == 'yes'].dropna(axis=1, how='any')
+                    if len(train) > 0:
+                        pass
+                    else:
+                        cta.append(0)
+                        walk_time.append(np.nan)
                 coordinates = [[data_temp.iloc[listing].longitude,data_temp.iloc[listing].latitude]]
                 for _ in range(len(train)):
-                    coordinates.append(train.geometry.iloc[_].x)
-                    coordinates.append(train.geometry.iloc[_].y)
-                # for x in range (len(train)):
-                #     loc_str = str(train.geometry.iloc[x])
-                #     loc_num = re.sub("[^0-9,^.,^ ,-]", "", loc_str).lstrip().split(' ')
-                #     for i in range(len(loc_num)): 
-                #         loc_num[i] = float(loc_num[i]) 
-                # coordinates.append(loc_num)
-                try:
-                    matrix = client.distance_matrix(
-                        locations = coordinates,
-                        destinations = [_ for _ in range(1,len(coordinates))],
-                        profile = 'foot-walking',
-                        metrics = ['distance', 'duration'],
-                        validate = False,
-                    )
-                except Exception:
-                    print('\n \n Resetting API Limit \n')
-                    time.sleep(500)
-                    continue
+                    coord_temp = [train.geometry.iloc[_].x,train.geometry.iloc[_].y]
+                    coordinates.append(coord_temp)     
+    #             try:
+    #                 print(len(coordinates))
+    #                 print([_ for _ in range(1,len(coordinates))])
+                matrix = client.distance_matrix(
+                    locations = coordinates,
+                    destinations = [_ for _ in range(1,len(coordinates))],
+                    profile = 'foot-walking',
+                    metrics = ['duration'],
+                    validate = False,
+                )
+    #             except Exception:
+    #                 print('\n \n Resetting API Limit \n')
+    #                 time.sleep(500)
+    #                 continue
                 cta.append(0)
                 walk_time.append(round((matrix['durations'][0][matrix['durations'][0].index(min(matrix['durations'][0]))]/60),2))
+                #print(walk_time)
+                #print(walk_time)
         except Exception:
             errors_s += 1 
             print("\n \n Exception handled: {} \n".format(errors_s))
             cta.append(np.nan)
             walk_time.append(np.nan)
-        #print('Listing #: {}'.format(listing + 1))
-        #print('CTA Length so far: {}'.format(len(cta)))
+        print('Listing #: {}'.format(listing + 1))
+        print('CTA Length so far: {}'.format(len(cta)))
+
     print("Errors encountared: {}".format(errors_s))
     print("Number of listings: {}".format(len(data_temp)))
     print("Number of listings with CTA count: {}".format(len(cta)))
@@ -207,14 +208,14 @@ def save_csv(data):
     #print(data_with_counts.head(10))
     data_with_counts.to_csv('data_with_counts_final.csv')
 
-# if __name__ == "__main__":
-#     start = time.time()
-#     dataset = choose_csv()
-#     data_amenities = pois_amenities(dataset)
-#     new_data = pois_subway(dataset)
-#     end = time.time()
-#     save_csv(new_data)
-#     print('Run time: {} minutes'.format((end - start)/60))
+if __name__ == "__main__":
+    start = time.time()
+    dataset = choose_csv()
+    #data_amenities = pois_amenities(dataset)
+    new_data = pois_subway(dataset)
+    end = time.time()
+    save_csv(new_data)
+    print('Run time: {:.2f} minutes'.format((end - start)/60))
 
 
 
