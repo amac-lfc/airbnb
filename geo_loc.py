@@ -192,8 +192,8 @@ def pois_subway(data):
             print("\n \n Exception handled: {} \n".format(errors_s))
             cta.append(np.nan)
             walk_time.append(np.nan)
-        print('Listing #: {}'.format(listing + 1))
-        print('CTA Length so far: {}'.format(len(cta)))
+        #print('Listing #: {}'.format(listing + 1))
+        #print('CTA Length so far: {}'.format(len(cta)))
 
     print("Errors encountared: {}".format(errors_s))
     print("Number of listings: {}".format(len(data_temp)))
