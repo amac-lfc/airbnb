@@ -1,5 +1,3 @@
-# Readme.md
-
 # Airbnb Price Prediciton Project
 
 This project's aim is to build a price prediction model based on Chicago Airbnb Listings dataset available from [InsideAirbnb](http://insideairbnb.com/get-the-data.html). The dataset is further extended by creating new variables based on geospatial analysis.
