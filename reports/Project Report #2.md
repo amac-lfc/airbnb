@@ -24,7 +24,11 @@ By using the first method, Missing Values, we can create a histogram of the miss
 
 As we can see our raw data contains quite a few missing values. The bars on the left represent the columns (more than 30 in total) where the proportion of missing data is in range from 0 to 0.3 (on the x-axis). The bar on the most right represents 3 columns where exactly or more than 90% is missing. In case we want to break this plot down we can access the information regarding the proportions of missing values by calling the missing_stats method of our *FeatureSelector* (fs) object. 
 
-[Untitled](https://www.notion.so/8888745abd7a403781c5ea7a9d280a60)
+Variable Name | Missing Fraction
+------------ | -------------
+square_feet |	0.994484
+monthly_price |	0.942019
+weekly_price |	0.940493
 
 The single unique value method is not going to be explained in this report but it is very useful for columns with unevenly distributed data where one value dominates a large proportion of all data within the column. The next method is widely used and essential for a good machine learning model. For a good linear model to perform well it is essential to drop highly correlated feature and thus avoid multicollinearity. The reason for this is that highly correlated features are linearly dependent and hence have a similar effect on the target variable. First to understand the idea behind multicollinearity let us explore the correlations between all the variables in our dataset (excluding our target variable - *price*) by calling `fs.plot_collinear(plot_all=True)`.
 
