@@ -20,7 +20,16 @@ Let's look into one of these variables called 'maximum_minimum_nights'. Due to t
 
 Oh! Something went completely wrong in here. Let's figure out what is the matter. 
 
-[Sample Statistics ](https://www.notion.so/640a2f79360749e5b539f990bcd46b0b)
+_ | Latitude | Accommodates | Price | Minimum Nights | Maximum Nights | Availability_30 
+------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- 
+count |	8355 | 8355 |	8355 |	8355 |	8355 | 8355 
+mean | 41.897565 | 	4.228606 | 134.203232 |	6.371155 | 674.135248 |	17.29599
+std	| 0.059075 |	2.861694 |	116.812175 |	18.4367 |	527.683597 |	12.951869
+min |	41.64736 |	1	| 10 |	1 |	1 |	0
+25% |	41.87149 |	2	| 60 | 1 | 30.5 |	0
+50% |	41.90032 |	4 |	100 |	2 |	1125 |	23
+75% |	41.938995 |	6 |	159 |	3 |	1125 |	30
+max |	42.02251 | 30 |	800 |	500 |	9000 | 30
 
 As we can see from the selected variables above the standard deviations differ greatly meaning that it is impossible to compare them. For this very reason the graph above had that incorrect shape. 
 
