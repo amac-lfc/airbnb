@@ -52,7 +52,7 @@ Here is the list of variables used to predict the price of a listings:
 - Availability_30 - Number of days a listing is available in the next 30 days 
 - Number_of_reviews - Total number of reviews 
 - Number_of_reviews_ltm - Number of reviews within last month 
-- Restaurants, Bars, Cafes, Universities - Number of places of specified type within 1000 meters from the listing 
+- Restaurants, Bars, Cafes, Universities - Number of places of specified type within 1000 meters from the listing (4 different variables) 
 - Time_to_cta_minutes - Time it takes to walk to the nearest subway (in Chicago CTA) station (Distance does not matter) 
 
 <b> Categorical variables: </b> 
