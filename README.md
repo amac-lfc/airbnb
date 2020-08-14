@@ -12,7 +12,7 @@ This project's aim is to build a price prediction model based on Chicago Airbnb 
 
 ## Foreword <a name="foreword"></a>
 
-This project is a part of James Rocco Research Scholarship provided by Lake Forest College and was carried out under the supervision and with great help of Prof. Arthur Bousquet. The main idea is based on an article by Graciela Carrillo posted on [Towards Data Science](https://towardsdatascience.com/predicting-airbnb-prices-with-machine-learning-and-location-data-5c1e033d0a5a). 
+This project is a part of James Rocco Research Scholarship provided by Lake Forest College and was carried out under the supervision of Prof. Arthur Bousquet. The main idea is based on an article by Graciela Carrillo posted on [Towards Data Science](https://towardsdatascience.com/predicting-airbnb-prices-with-machine-learning-and-location-data-5c1e033d0a5a). 
 
 ## Installation <a name="installation"></a>
 
@@ -40,6 +40,15 @@ To conveniently read all the notebooks follow this [link](https://nbviewer.jupyt
 
 ## Results <a name="results"></a>
 
+
+_ | Linear Regression | Lasso Regression | Ridge Regression | Lasso Regression with Polynomial Features | XGBoost | 
+------------ | ------------- | ------------- | ------------- | ------------- | ------------- | 
+<b> No new variables: </b> <br/>Train R<sup>2</sup>  | 0.3683 | 0.3656 | 0.3747 | 0.4429 | 0.7771
+Test R<sup>2</sup> | 0.407 | 0.405 | 0.3843 | 0.4688 | 0.6106 
+<b> With new variables: </b> Train R<sup>2</sup> | 0.4696 | 0.4687 | | | 0.7173
+Test R<sup>2</sup> | 0.4424 | 0.4419 | | | 0.5417 
+
+
 Coming Soon 
 
 ## Resources <a name="resources"></a>
@@ -49,7 +58,7 @@ Coming Soon
 3. [https://learn.datacamp.com/courses/unsupervised-learning-in-python](https://learn.datacamp.com/courses/unsupervised-learning-in-python) - Unsupervised Learning Course on DataCamp
 4. [https://learn.datacamp.com/courses/supervised-learning-with-scikit-learn](https://learn.datacamp.com/courses/supervised-learning-with-scikit-learn) - Supervised Learning Cousr on DataCamp
 5. [https://www.textbook.ds100.org/intro.htmlPrinciples](https://www.textbook.ds100.org/intro.htmlPrinciples) and Techniques of Data Science By Sam Lau, Joey Gonzalez, and Deb Nolan
-6. [https://github.com/Jie-Yuan/FeatureSelector/blob/master/Feature%20Selector%20Usage.ipynb](https://github.com/Jie-Yuan/FeatureSelector/blob/master/Feature%20Selector%20Usage.ipynb) - Feature_Selector package
+6. [https://github.com/Jie-Yuan/FeatureSelector/blob/master/Feature%20Selector%20Usage.ipynb](https://github.com/Jie-Yuan/FeatureSelector/blob/master/Feature%20Selector%20Usage.ipynb) - Feature_Selector packagew
 7. [https://towardsdatascience.com/airbnb-price-prediction-using-linear-regression-scikit-learn-and-statsmodels-6e1fc2bd51a6](https://towardsdatascience.com/airbnb-price-prediction-using-linear-regression-scikit-learn-and-statsmodels-6e1fc2bd51a6) - Simmilar Price Prediciton model for Airbnb data
 8. [https://towardsdatascience.com/ridge-and-lasso-regression-a-complete-guide-with-python-scikit-learn-e20e34bcbf0b](https://towardsdatascience.com/ridge-and-lasso-regression-a-complete-guide-with-python-scikit-learn-e20e34bcbf0b) - Explanation of the theory behind Lasso and Ridge Regressions
 9. [https://www.youtube.com/watch?v=Q81RR3yKn30](https://www.youtube.com/watch?v=Q81RR3yKn30) - Ridge Regression
