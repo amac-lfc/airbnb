@@ -41,15 +41,14 @@ To conveniently read all the notebooks follow this [link](https://nbviewer.jupyt
 ## Results <a name="results"></a>
 
 
-_ | Linear Regression | Lasso Regression | Ridge Regression | Lasso Regression with Polynomial Features | XGBoost | 
------------- | ------------- | ------------- | ------------- | ------------- | ------------- | 
-<b> No new variables: </b> <br/>Train R<sup>2</sup>  | 0.3683 | 0.3656 | 0.3747 | 0.4429 | 0.7771
-Test R<sup>2</sup> | 0.407 | 0.405 | 0.3843 | 0.4688 | 0.6106 
-<b> With new variables: </b> Train R<sup>2</sup> | 0.4696 | 0.4687 | | | 0.7173
-Test R<sup>2</sup> | 0.4424 | 0.4419 | | | 0.5417 
+_ | Linear Regression | Lasso Regression | Ridge Regression | Lasso Regression with Polynomial Features| Ridge Regression with Polynomial Features | XGBoost | 
+------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | 
+<b> No new variables: </b> <br/>Train R<sup>2</sup>  | 0.3646 | 0.3646 | 0.3646 | 0.4061 | 0.422 | 0.7112
+Test R<sup>2</sup> | 0.4102 | 0.4104 | 0.4102 | 0.3903 | 0.4043 | 0.5816
+<b> With new variables: </b> Train R<sup>2</sup> | 0.457 | 0.4552 | 0.4558 | 0.487 | 0.494 | 0.7173
+Test R<sup>2</sup> | 0.4169 | 0.4163 | 0.4163 | 0.435 | 0.507 | 0.5417 
 
 
-Coming Soon 
 
 ## Resources <a name="resources"></a>
 
