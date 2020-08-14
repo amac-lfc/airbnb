@@ -1,4 +1,4 @@
-# Airbnb Price Prediciton Project
+# Airbnb Price Prediciton Project (Chicago) 
 
 This project's aim is to build a price prediction model based on Chicago Airbnb Listings dataset available from [InsideAirbnb](http://insideairbnb.com/get-the-data.html). The dataset is further extended by creating new variables based on geospatial analysis.
 
@@ -40,7 +40,7 @@ To conveniently read all the notebooks follow this [link](https://nbviewer.jupyt
 
 ## Project Description and Results <a name="results"></a>
 
-The main goal of this project is to build a model that predicts the price of a listing given its dependent variables. The data for both dependent and independent variables is available through Insideairbnb.com. The accuracy, i.e. how well the model performs, is measured by R^2  a metric commonly used for regression models that represents the proportion of the variance for a dependent variable that's explained by independent variables. To further improve the accuracy and add originality to the project, 5 new variables are created by analyzing surrounding areas and fetching distances to chosen types of locations as well as calculating the walking time to the nearest subway station. 
+<b> The main goal of this project is to build a model that predicts the price of a listing given its dependent variables. </b> The data for both dependent and independent variables is available through Insideairbnb.com. The accuracy, i.e. how well the model performs, is measured by R^2  a metric commonly used for regression models that represents the proportion of the variance for a dependent variable that's explained by independent variables. To further improve the accuracy and add originality to the project, 5 new variables are created by analyzing surrounding areas and fetching distances to chosen types of locations as well as calculating the walking time to the nearest subway station. 
 
 As it can be apparent from file descriptions, a step-by-step approach was taken to build the model. To understand the model and the thought process you can read through the notebooks.
 
