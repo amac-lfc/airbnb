@@ -44,7 +44,7 @@ To conveniently read all the notebooks follow this [link](https://nbviewer.jupyt
 
 Here is the list of variables used to predict the price of a listings:
 
-<br/> <b> Numerical variables:  </b>
+ <b> Numerical variables:  </b>
 - Accommodates - Number of people a listing can accommodate 
 - Bathrooms - Number of bathrooms 
 - Minimum_nights - Minimum amount of nights a listing should be booked for 
