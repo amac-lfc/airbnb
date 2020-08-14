@@ -42,6 +42,25 @@ To conveniently read all the notebooks follow this [link](https://nbviewer.jupyt
 
 <b> The main goal of this project is to build a model that predicts the price of a listing given its dependent variables. </b> The data for both dependent and independent variables is available through Insideairbnb.com. The accuracy, i.e. how well the model performs, is measured by R^2  a metric commonly used for regression models that represents the proportion of the variance for a dependent variable that's explained by independent variables. To further improve the accuracy and add originality to the project, 5 new variables are created by analyzing surrounding areas and fetching distances to chosen types of locations as well as calculating the walking time to the nearest subway station. 
 
+Here is the list of variables used to predict the price of a listings:<br/>
+<b> Numerical variables:  </b>
+- Accommodates - Number of people a listing can accommodate 
+- Bathrooms - Number of bathrooms 
+- Minimum_nights - Minimum amount of nights a listing should be booked for 
+- Maxium_nights - Maximum amount of nights a listing can be booked for
+- Availability_30 - Number of days a listing is available in the next 30 days 
+- Number_of_reviews - Total number of reviews 
+- Number_of_reviews_ltm - Number of reviews within last month 
+- Restaurants, Bars, Cafes, Universities - Number of places of specified type within 1000 meters from the listing 
+- Time_to_cta_minutes - Time it takes to walk to the nearest subway (in Chicago CTA) station (Distance does not matter) 
+
+<br/> <b> Categorical variables: </b> 
+- Neighbourhood_cleansed - name of the neighborhood a listing is located in 
+- Property_type - type of property a listing is located in (e.g. Apartment, Condomonium, House, etc.) 
+- Bed_type - type of bed present in a listing 
+- Cancellation_policy - type of cancellation policy chosen by the host 
+
+
 As it can be apparent from file descriptions, a step-by-step approach was taken to build the model. To understand the model and the thought process you can read through the notebooks.
 
 To achieve the best possible result I tried various models and these are the results: 
