@@ -44,7 +44,7 @@ To conveniently read all the notebooks follow this [link](https://nbviewer.jupyt
 
 Here is the list of variables used to predict the price of a listings:
 
- <b> Numerical variables:  </b>
+<b> Numerical variables:  </b>
 - Accommodates - Number of people a listing can accommodate 
 - Bathrooms - Number of bathrooms 
 - Minimum_nights - Minimum amount of nights a listing should be booked for 
@@ -55,7 +55,7 @@ Here is the list of variables used to predict the price of a listings:
 - Restaurants, Bars, Cafes, Universities - Number of places of specified type within 1000 meters from the listing 
 - Time_to_cta_minutes - Time it takes to walk to the nearest subway (in Chicago CTA) station (Distance does not matter) 
 
-<br/> <b> Categorical variables: </b> 
+<b> Categorical variables: </b> 
 - Neighbourhood_cleansed - name of the neighborhood a listing is located in 
 - Property_type - type of property a listing is located in (e.g. Apartment, Condomonium, House, etc.) 
 - Bed_type - type of bed present in a listing 
