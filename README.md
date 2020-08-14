@@ -45,7 +45,7 @@ _ | Linear Regression | Lasso Regression | Ridge Regression | Lasso Regression w
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | 
 <b> No new variables: </b> <br/>Train R<sup>2</sup>  | 0.3646 | 0.3646 | 0.3646 | 0.4061 | 0.422 | 0.7112
 Test R<sup>2</sup> | 0.4102 | 0.4104 | 0.4102 | 0.3903 | 0.4043 | 0.5816
-<b> With new variables: </b> Train R<sup>2</sup> | 0.457 | 0.4552 | 0.4558 | 0.487 | 0.494 | 0.7173
+<b> With new variables: </b> <br/>Train R<sup>2</sup> | 0.457 | 0.4552 | 0.4558 | 0.487 | 0.494 | 0.7173
 Test R<sup>2</sup> | 0.4169 | 0.4163 | 0.4163 | 0.435 | 0.507 | 0.5417 
 
 
