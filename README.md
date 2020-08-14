@@ -38,8 +38,13 @@ To conveniently read all the notebooks follow this [link](https://nbviewer.jupyt
     - time_to_cta_minutes - Time in minutes to the nearest CTA station (can be out of the radius)
 6. [cta_mapping.ipynb](https://github.com/amac-lfc/airbnb/blob/master/cta_mapping.ipynb) - Visualization of geo_loc.py using [Folium](https://python-visualization.github.io/folium/index.html) maps (Map of routes to CTAs in the radius and shortest path detection)
 
-## Results <a name="results"></a>
+## Project Description and Results <a name="results"></a>
 
+The main goal of this project is to build a model that predicts the price of a listing given its dependent variables. The data for both dependent and independent variables is available through Insideairbnb.com. The accuracy, i.e. how well the model performs, is measured by R^2  a metric commonly used for regression models that represents the proportion of the variance for a dependent variable that's explained by independent variables. To further improve the accuracy and add originality to the project, 5 new variables are created by analyzing surrounding areas and fetching distances to chosen types of locations as well as calculating the walking time to the nearest subway station. 
+
+As it can be apparent from file descriptions, a step-by-step approach was taken to build the model. To understand the model and the thought process you can read through the notebooks.
+
+To achieve the best possible result I tried various models and these are the results: 
 
 _ | Linear Regression | Lasso Regression | Ridge Regression | Lasso Regression with Polynomial Features| Ridge Regression with Polynomial Features | XGBoost | 
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | 
