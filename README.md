@@ -42,6 +42,11 @@ To conveniently read all the notebooks follow this [link](https://nbviewer.jupyt
 
 <b> The main goal of this project is to build a model that predicts the price of a listing given its dependent variables. </b> The data for both dependent and independent variables is available through Insideairbnb.com. The accuracy, i.e. how well the model performs, is measured by R^2  a metric commonly used for regression models that represents the proportion of the variance for a dependent variable that's explained by independent variables. To further improve the accuracy and add originality to the project, 5 new variables are created by analyzing surrounding areas and fetching distances to chosen types of locations as well as calculating the walking time to the nearest subway station. 
 
+Since it is possible to visualize locations and routes, below you can see a map with routes to all subway stations within the range of 1000m (the circle) and with the shortest route colored in green. Red dots represent subway station that lie outside the wanted radius. 
+
+![Map](reports/Images/cta_mapping.png)
+
+
 Here is the list of variables used to predict the price of a listings:
 
 <b> Numerical variables:  </b>
