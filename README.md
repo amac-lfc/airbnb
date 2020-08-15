@@ -82,6 +82,11 @@ Test R<sup>2</sup> | 0.4102 | 0.4104 | 0.4102 | 0.3903 | 0.4043 | 0.5816
 <b> With new variables: </b> <br/>Train R<sup>2</sup> | 0.457 | 0.4552 | 0.4558 | 0.487 | 0.494 | 0.7173
 Test R<sup>2</sup> | 0.4169 | 0.4163 | 0.4163 | 0.435 | 0.507 | 0.624 
 
+A good way to see the difference in modeling between the data without and with the new variables is to look at feature importances computed by XGBoost. Categorical variables are not included not to overcrowd the plot. 
+
+As we can see on the bottom plot the new features possess high importance (higher than some of the initial features). 
+
+![no_new](reports/Images/feature_importance_raw.png "title-1")  ![new](reports/Images/feature_importance_new_features.png) 
 
 
 ## Resources <a name="resources"></a>
