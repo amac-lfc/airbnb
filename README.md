@@ -86,7 +86,7 @@ A good way to see the difference in modeling between the data without and with t
 
 As we can see on the bottom plot the new features possess high importance (higher than some of the initial features). 
 
-![no_new](reports/Images/feature_importance_raw.png "title-1")  ![new](reports/Images/feature_importance_new_features.png) 
+![no_new](reports/Images/feature_importance_raw_new.png) ![new](reports/Images/feature_importance_new.png) 
 
 
 ## Resources <a name="resources"></a>
