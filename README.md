@@ -28,7 +28,7 @@ To conveniently read all the notebooks follow this [link](https://nbviewer.jupyt
 
 1. [EDA.ipynb (Exploratory Data Analysis)](https://github.com/amac-lfc/airbnb/blob/master/EDA.ipynb) - A brief overview and analysis of raw data
 2. [kepler_map.ipynb](https://github.com/amac-lfc/airbnb/blob/master/kepler_map.ipynb) - Visualization of the whole dataset using [Kepler.gl](http://kepler.gl) 
-3. [data_preprocessing.ipynb](https://github.com/amac-lfc/airbnb/blob/master/data_preprocessing.ipynb) - Preprocessing the data for future uses (outlier detection, feature selection, handling missing data, etc.) 
+3. [data_preprocessing.ipynb](https://github.com/amac-lfc/ airbnb/blob/master/data_preprocessing.ipynb) - Preprocessing the data for future uses (outlier detection, feature selection, handling missing data, etc.) 
 4. [regressions.ipynb](https://github.com/amac-lfc/airbnb/blob/master/regressions.ipynb) - Development of initial price prediction models
 5. [geo_loc.py](https://github.com/amac-lfc/airbnb/blob/master/geo_loc.py) - A python script for geospatial analysis: creates 5 new variables using such libraries as [OSMnx](https://github.com/gboeing/osmnx) and [OpenRouteSerivce](https://github.com/GIScience/openrouteservice-py):
     - Restaurants - Number of restaurants in a 1000 meters radius
