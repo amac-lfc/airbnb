@@ -77,16 +77,17 @@ To achieve the best possible result I tried various models and these are the res
 
 _ | Linear Regression | Lasso Regression | Ridge Regression | Lasso Regression with Polynomial Features| Ridge Regression with Polynomial Features | XGBoost | 
 ------------ | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | 
-<b> No new variables: </b> <br/>Train R<sup>2</sup>  | 0.3646 | 0.3646 | 0.3646 | 0.4061 | 0.422 | 0.7112
-Test R<sup>2</sup> | 0.4102 | 0.4104 | 0.4102 | 0.3903 | 0.4043 | 0.5816
-<b> With new variables: </b> <br/>Train R<sup>2</sup> | 0.457 | 0.4552 | 0.4558 | 0.487 | 0.494 | 0.7173
-Test R<sup>2</sup> | 0.4169 | 0.4163 | 0.4163 | 0.435 | 0.507 | 0.624 
+<b> No new variables: </b> <br/>Train R<sup>2</sup>  | 0.4298 | 0.4294 | 0.4296 | 0.4918 | 0.5143 | 0.6428
+Test R<sup>2</sup> | 0.4607 | 0.462 | 0.4615 | 0.4867 | 0.4925 | 0.5391
+<b> With new variables: </b> <br/>Train R<sup>2</sup> | 0.4387 | 0.4375 | 0.4384 | 0.5036 | 0.5224 | 0.6742
+Test R<sup>2</sup> | 0.411 | 0.4163 | 0.4129 | 0.4503 | 0.453 | 0.5445
 
 A good way to see the difference in modeling between the data without and with the new variables is to look at feature importances computed by XGBoost. Categorical variables are not included not to overcrowd the plot. 
 
 As we can see on the bottom plot the new features possess high importance (higher than some of the initial features). 
 
-![no_new](reports/Images/feature_importance_raw_new.png) ![new](reports/Images/feature_importance_new.png) 
+![no_new](reports/Images/0.png)
+![new](reports/Images/1.png) 
 
 
 ## Resources <a name="resources"></a>

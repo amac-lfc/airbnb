@@ -10,8 +10,6 @@ import re
 import requests
 import time
 from openrouteservice import client, places
-#api_key='5b3ce3597851110001cf6248fb1ecfcd8ab8422b93b5dd978d83e93e'
-# '5b3ce3597851110001cf6248f4a7fee5db334593bc67406f86071778'
 ### for ors we need an API Key, it can be found on the https://openrouteservice.org/ once you create an account 
 client = ors.Client(key=input('Enter your OpenRouteService API Key: '))
 ox.config(log_console=False, use_cache=True)
