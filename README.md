@@ -22,7 +22,7 @@ conda env create --file environment.yml
 
 ## File Descriptions (Follow in order) <a name="files"></a>
 
-To conveniently read all the notebooks follow this [link](https://nbviewer.jupyter.org/). 
+To conveniently read all the notebooks follow this [link](https://nbviewer.jupyter.org/github/amac-lfc/airbnb/tree/master/notebooks/). 
 
 Notebooks/: 
 1. [EDA.ipynb (Exploratory Data Analysis)](https://github.com/amac-lfc/airbnb/blob/master/EDA.ipynb) - A brief overview and analysis of raw data
