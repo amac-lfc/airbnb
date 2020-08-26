@@ -16,7 +16,7 @@ However, the non-numeric variables are not the only problem, there are still num
 
 Let's look into one of these variables called 'maximum_minimum_nights'. Due to the lack of documentation for the dataset I was unable to identify the purpose of this variable. Before thoughtlessly dropping this and other similar variables, let's take a look at how does this data fit in the overall model. For this, I will be using the KMeans clustering algorithm that (on the very basic levels) finds patterns in the data and groups it into specified number of clusters K. In order to choose the best number of clusters something called the 'elbow method' is used, it will be clear in a moment why it is called like this. For us to see the 'elbow' I will initialize a function that plots the inertias (or the distance to centroids, points that best describe a given cluster, identified by the KMeans) depending on the number of clusters. 
 
-![intertias_linegraph_with_extra_variables.png](/Images/report_1/intertias_linegraph_with_extra_variables.png)
+![intertias_linegraph_with_extra_variables.png](Images/report_1/intertias_linegraph_with_extra_variables.png) 
 
 Oh! Something went completely wrong in here. Let's figure out what is the matter. 
 
@@ -39,11 +39,11 @@ $$z = (x - \mu) / \sigma  $$
 
 After applying the method on our data and calling the inertia ~ cluster graph again we can see an obvious improvement in our model.
 
-![intertias_linegraph_with_extra_variables_scaled.png](/Images/report_1/intertias_linegraph_with_extra_variables_scaled.png)
+![intertias_linegraph_with_extra_variables_scaled.png](Images/report_1/intertias_linegraph_with_extra_variables_scaled.png)
 
 But where is the elbow? The problem now lies in those extra variables that do not bear any statistical significance to our model. Let's remove them, scale our data again and see the results. 
 
-![inertias_linegraph_(1).png](/Images/report_1/inertias_linegraph_(1).png)
+![inertias_linegraph_(1).png](Images/report_1/inertias_linegraph_(1).png)
 
 This looks much better! As we can see the elbow lies between k equaling 2 and 4, meaning that the best suitable number of clusters is 3. Now when our data is ready for further exploration, let see the relationship between some of the variables and the price. 
 
