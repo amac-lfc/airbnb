@@ -12,7 +12,7 @@ As the first part of the new data computation I am going to compute the number o
 
 This is how the new data looks like: 
 
-![new_var](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5c4eef16-c52d-47a8-96da-40db803f2eff/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200729%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200729T183301Z&X-Amz-Expires=86400&X-Amz-Signature=f2bab89522ea34b2af075613c8b776f2a834d438aef4566bb0aef75f21180c91&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![new_var](Images/report_3/newvars.png)
 
 ### CTA Count and Travel Time Calculation
 
@@ -27,7 +27,7 @@ Moreover, when retrieving the CTA data from OSM we get not only the name of each
 
 And this is how the new data look like:  
 
-![new_var_cta](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/24f472b7-ede9-4386-b689-2199dba1ed14/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200729%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200729T183358Z&X-Amz-Expires=86400&X-Amz-Signature=fd4b53d1967bbdbe858c28824d9e5d015c7c9d1d4acbc90f94b2894ccff175b1&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![new_var_cta](Images/report_3/newcta.png)
 
 ## Mapping Airbnb, CTA, and Projecting Walking Routes
 
@@ -36,7 +36,7 @@ Instead of just making the calculations and keeping the data abstract, let's vis
 - (1) A shapely geometry point needs to be created with listing's longitude and latitude as its parameters (Shapely is a Python package for manipulation and analysis of planar geometric objects). Why Shapely? Because it is most commonly used for geospatial geometric objects and is integrated in OSMnx, OpenRouteService, and Folium.
 - (2) Using yet another package, geog, suited for geodesic manipulations a circle with a specified radius, in our case 1000 meters. Then, the geog circle (or a polygon with 100 edges) is converted into a shapely polygon.
 
-    ![cta_1](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/334b79df-6b14-435c-a020-639b03eadf9c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200729%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200729T183737Z&X-Amz-Expires=86400&X-Amz-Signature=f7c35cefb7497296a1c5936cb3e0df103aef8e323ea4fa28ada02dab83245ece&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+    ![cta_1](Images/report_3/cta_map_1.png)
 
 - (3) Then a geojson file containing the locations of all the CTA entrances is imported. All the locations are represented by shapely points.
 - (4) Now we have to identify if a given CTA entrance is located within the 1000 meter circle (shapely polygon). To do it, shapely's `within` function is used, that identifies if a point lies within another object (the circle).
@@ -44,12 +44,12 @@ Instead of just making the calculations and keeping the data abstract, let's vis
     - If outside - then a red dot is placed on the map corresponding to its location.
 - (5) Finally, the route data is used to project all the possible paths on the map. The shortest path is colored in green.
 
-![cta_2](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c30d145b-c419-4d09-9db1-3e3c235498e3/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200729%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200729T183442Z&X-Amz-Expires=86400&X-Amz-Signature=d5eea4924ce448d3286828123c0d4c394fc07906ec7e2828cb0063b6d81e9807&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22)
+![cta_2](Images/report_3/cta_map_2.png)
 
 ## Further Visualization
 
 Instead of focusing on an individual point, let's put all the data we have on the map and see what insights we can gain from that. Again, there is a variety if ways to do it, but when exploring, I stumbled upon [Kepler.gl](http://kepler.gl) and it became the package of choice. An amazing thing about this package is the fact that parameters of the map do not need to be coded, but instead can be specified using its graphical interface. 
 
-![kepler](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/1fd10556-3ea5-45ee-8db1-1463eb0386b3/kepler-gl.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20200729%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200729T183507Z&X-Amz-Expires=86400&X-Amz-Signature=f6a3f1c39d3cad75d666ac7a3a59bb3470c387855a04289264116610add6eacd&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22kepler-gl.png%22)
+![kepler](Images/report_3/kepler.png)
 
 The map above represents the relationship between the price and location  as well as shows us the distribution of Airbnb in Chicago. We can clearly see from the map that the most number of  listings as well the most expensive ones are located in the Loop and in the North, and that the southward you go the less is chance to find one.
