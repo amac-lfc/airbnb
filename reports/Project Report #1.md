@@ -16,7 +16,7 @@ However, the non-numeric variables are not the only problem, there are still num
 
 Let's look into one of these variables called 'maximum_minimum_nights'. Due to the lack of documentation for the dataset I was unable to identify the purpose of this variable. Before thoughtlessly dropping this and other similar variables, let's take a look at how does this data fit in the overall model. For this, I will be using the KMeans clustering algorithm that (on the very basic levels) finds patterns in the data and groups it into specified number of clusters K. In order to choose the best number of clusters something called the 'elbow method' is used, it will be clear in a moment why it is called like this. For us to see the 'elbow' I will initialize a function that plots the inertias (or the distance to centroids, points that best describe a given cluster, identified by the KMeans) depending on the number of clusters. 
 
-![intertias_linegraph_with_extra_variables.png](reports/Images/report_1/intertias_linegraph_with_extra_variables.png)
+![intertias_linegraph_with_extra_variables.png](/Images/report_1/intertias_linegraph_with_extra_variables.png)
 
 Oh! Something went completely wrong in here. Let's figure out what is the matter. 
 
@@ -39,15 +39,15 @@ $$z = (x - \mu) / \sigma  $$
 
 After applying the method on our data and calling the inertia ~ cluster graph again we can see an obvious improvement in our model.
 
-![intertias_linegraph_with_extra_variables_scaled.png](reports/Images/report_1/intertias_linegraph_with_extra_variables_scaled.png)
+![intertias_linegraph_with_extra_variables_scaled.png](/Images/report_1/intertias_linegraph_with_extra_variables_scaled.png)
 
 But where is the elbow? The problem now lies in those extra variables that do not bear any statistical significance to our model. Let's remove them, scale our data again and see the results. 
 
-![inertias_linegraph_(1).png](reports/Images/report_1/inertias_linegraph_(1).png)
+![inertias_linegraph_(1).png](/Images/report_1/inertias_linegraph_(1).png)
 
 This looks much better! As we can see the elbow lies between k equaling 2 and 4, meaning that the best suitable number of clusters is 3. Now when our data is ready for further exploration, let see the relationship between some of the variables and the price. 
 
-![Accomodates___Price_Scatter.png](reports/Images/report_1/Accomodates___Price_Scatter.png)
+![Accomodates___Price_Scatter.png](/Images/report_1/Accomodates___Price_Scatter.png)
 
 On the scatterplot above the price is on the x-axis and the number a given listing can accommodate on the y-axis. From the graph we can see that there is no clear relationship between these two variable but what we can see is the presence of multiple outliers that might negatively impact our data. It is apparent that most of the data lies in the lower price range (below 2000). Moreover, in the future the goal is to be able to predict the best price for a property when listed on Airbnb and these 'special' cases are not the goal of the model, therefore let's focus on the 'normal' cases. We want to know what percentage of the data lies above the $2000, $1000, and $800 mark and if it is small enough we can drop these 'special' listings. Also, let's check for faulty listings with a price of 0 dollars. 
 
@@ -60,25 +60,25 @@ Number of listing with price equal to zero: 3*
 
 As we can see roughly only 2% of all data lies above the $800 per night mark. If we drop this 2 percent it is not going to be a great loss and it will make it possible for us to focus on the 'normal' listings ($800 per night is luxurious enough). 
 
-![baths___price_scatter.png](reports/Images/report_1/baths___price_scatter.png)
+![baths___price_scatter.png](/Images/report_1/baths___price_scatter.png)
 
 The scatterplot above shows a similar relationship to the last one, but this time with the number of bathrooms on the y-axis. Also since we dropped the extra luxurious listings, the data seems to be better distributed but with an apparent left skew. This further can be seen when we plot a boxplot of the 'price' variable. 
 
-![price_box.png](reports/Images/report_1/price_box.png)
+![price_box.png](/Images/report_1/price_box.png)
 
 Now, finally, let's apply the KMeans clustering on out data and see if there is any clear and apparent way to trace the origin of the clusters, i.e. what variable is the most representative of clusters. 
 
-![number_of_reviews___price___colored.png](reports/Images/report_1/number_of_reviews___price___colored.png))
+![number_of_reviews___price___colored.png](/Images/report_1/number_of_reviews___price___colored.png))
 
-![baths___price___colored_(1).png](reports/Images/report_1/baths___price___colored_(1).png)
+![baths___price___colored_(1).png](/Images/report_1/baths___price___colored_(1).png)
 
-![accomodates___price___colored_(1).png](reports/Images/report_1/accomodates___price___colored_(1).png)
+![accomodates___price___colored_(1).png](/Images/report_1/accomodates___price___colored_(1).png)
 
 As we can see, unfortunately, at this stage neither of the variables demonstrate the clusters (that are represented in 3 colors) clearly. Meaning there has to be additional work to be put to identify the varying clusters. 
 
 What we can do at this stage is to apply PCA (Principal Component Analysis) that is an algorithm that is used primarily for dimensionality reduction (dimensions meaning variables). This way instead of our initial 19 independent variables and the price (the dependent variable), we can have 2 independent and 1 dependent. Another great outcome of dimensionality reduction is the ability to graph the data. 
 
-![pca_3d_colored.png](reports/Images/report_1/pca_3d_colored.png)
+![pca_3d_colored.png](/Images/report_1/pca_3d_colored.png)
 
 Now, our clusters are more representative and can be easily identified on this plot. However, the problem with PCA and this plot is that even though we can see the clusters now, it is unknown what these newly generated dimensions (namely PCA Variable #1 and PCA Variable #2) represent and thus their practical implementation is limited. 
 
