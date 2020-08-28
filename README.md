@@ -1,5 +1,7 @@
 # Airbnb Price Prediction Project (Chicago) 
 
+![Logo](reports/Images/title_logo.png) 
+
 ### Table of Contents
 
 1. [Foreword](#foreword) 
