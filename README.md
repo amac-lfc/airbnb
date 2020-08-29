@@ -98,35 +98,57 @@ As we can see on the bottom plot the new features possess high importance (highe
 ## **Resources** <a name="resources"></a>
 
 #### **Package Docs**
+
 [Shapely](https://shapely.readthedocs.io/en/latest/index.html)
+
 [Point in Polygon](https://automating-gis-processes.github.io/CSC18/lessons/L4/point-in-polygon.html)
+
 [OSMnx](https://osmnx.readthedocs.io/en/latest/index.html)
+
 [OSMnx Example Notebooks](https://github.com/gboeing/osmnx-examples/blob/master/notebooks/00-osmnx-features-demo.ipynb)
+
 [openrouteservice-py](https://openrouteservice-py.readthedocs.io/en/latest/)
+
 [Folium](https://python-visualization.github.io/folium/)
+
 [KeplerGL for Jupyter Notebook](https://github.com/keplergl/kepler.gl/tree/master/bindings/kepler.gl-jupyter) 
 
 #### **DataCamp**
+
 [Pandas Foundations](https://campus.datacamp.com/courses/pandas-foundations/)
+
 [Unsupervised Learning](https://learn.datacamp.com/courses/unsupervised-learning-in-python) 
+
 [Supervised Learning]((https://learn.datacamp.com/courses/supervised-learning-with-scikit-learn) 
 
+
 #### **Youtube Videos** 
+
 [Ridge Regression](https://www.youtube.com/watch?v=Q81RR3yKn30)
 [Lasso Regression](https://www.youtube.com/watch?v=NGf0voTMlcs)
+
 [Machine Learning Tutorial Playlist](https://www.youtube.com/playlist?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF)
+
 [Theory behind PCA](https://www.youtube.com/watch?v=0GzMcUy7ZI0) 
+
 [Complete Machine Learning Course by Andrew NG](https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN) 
+
 
 #### **Medium Articles** 
 [Airbnb Price Prediction Using Linear Regression (Scikit-Learn and StatsModels)](https://towardsdatascience.com/airbnb-price-prediction-using-linear-regression-scikit-learn-and-statsmodels-6e1fc2bd51a6)
+
 [Ridge and Lasso Regression: L1 and L2 Regularization](https://towardsdatascience.com/ridge-and-lasso-regression-a-complete-guide-with-python-scikit-learn-e20e34bcbf0b)
+
 [Predicting Airbnb prices with machine learning and location data](https://towardsdatascience.com/predicting-airbnb-prices-with-machine-learning-and-location-data-5c1e033d0a5a)
+
 [Exploring Airbnb prices in London: which factors influence price?](https://towardsdatascience.com/predicting-airbnb-prices-with-deep-learning-part-2-how-to-improve-your-nightly-price-50ea8bc2bd29)
+
 [How to calculate Travel time for any location in the world](https://towardsdatascience.com/how-to-calculate-travel-time-for-any-location-in-the-world-56ce639511f)
+
 [Find and plot your optimal path using OSM, Plotly and NetworkX in Python](https://towardsdatascience.com/find-and-plot-your-optimal-path-using-plotly-and-networkx-in-python-17e75387b873)
+
 [Loading Data from OpenStreetMap with Python and the Overpass API](https://towardsdatascience.com/loading-data-from-openstreetmap-with-python-and-the-overpass-api-513882a27fd0)
+
 [How to Create Eye-Catching Maps With Python and Kepler.gl](https://medium.com/nightingale/how-to-create-eye-catching-maps-with-python-and-kepler-gl-e7e897eff8ac)
+
 [Measuring pedestrian accessibility](https://towardsdatascience.com/measuring-pedestrian-accessibility-97900f9e4d56)
-
-
