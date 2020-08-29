@@ -29,7 +29,7 @@ To conveniently read all the notebooks follow this [link](https://nbviewer.jupyt
 Notebooks/: 
 1. [EDA.ipynb (Exploratory Data Analysis)](https://github.com/amac-lfc/airbnb/blob/master/EDA.ipynb) - A brief overview and analysis of raw data
 2. [kepler_map.ipynb](https://github.com/amac-lfc/airbnb/blob/master/kepler_map.ipynb) - Visualization of the whole dataset using [Kepler.gl](http://kepler.gl) 
-3. [data_preprocessing.ipynb](https://github.com/amac-lfc/ airbnb/blob/master/data_preprocessing.ipynb) - Preprocessing the data for future uses (outlier detection, feature selection, handling missing data, etc.) 
+3. [data_preprocessing.ipynb](https://github.com/amac-lfc/airbnb/blob/master/data_preprocessing.ipynb) - Preprocessing the data for future uses (outlier detection, feature selection, handling missing data, etc.) 
 4. [regressions.ipynb](https://github.com/amac-lfc/airbnb/blob/master/regressions.ipynb) - Development of initial price prediction models
 5. [cta_mapping.ipynb](https://github.com/amac-lfc/airbnb/blob/master/cta_mapping.ipynb) - Visualization of geo_loc.py using [Folium](https://python-visualization.github.io/folium/index.html) maps (Map of routes to CTAs in the radius and shortest path detection)
 6. [model.ipynb](https://github.com/amac-lfc/airbnb/blob/master/notebooks/model.ipynb) - Final model for price prediciton that compares the results of datasets with and without newly produced variables
