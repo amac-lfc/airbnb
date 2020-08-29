@@ -119,12 +119,13 @@ As we can see on the bottom plot the new features possess high importance (highe
 
 [Unsupervised Learning](https://learn.datacamp.com/courses/unsupervised-learning-in-python) 
 
-[Supervised Learning]((https://learn.datacamp.com/courses/supervised-learning-with-scikit-learn) 
+[Supervised Learning](https://learn.datacamp.com/courses/supervised-learning-with-scikit-learn) 
 
 
 #### **Youtube Videos** 
 
 [Ridge Regression](https://www.youtube.com/watch?v=Q81RR3yKn30)
+
 [Lasso Regression](https://www.youtube.com/watch?v=NGf0voTMlcs)
 
 [Machine Learning Tutorial Playlist](https://www.youtube.com/playlist?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF)
